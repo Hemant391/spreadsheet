@@ -4,7 +4,8 @@ import './App.css';
 function App() {
   const [grid, setGrid] = useState(new Array(100).fill(Array(10).fill('')));
   const [query, setQuery] = useState('');
-  const [filtergrid, setFiltergrid] = useState([])
+  const [filtergrid, setFiltergrid] = useState([]);
+  const [cordinates,setcordinates]=useState('')
 
 
 
@@ -15,7 +16,7 @@ function App() {
       )
     );
     setGrid(newGrid);
-   
+
   };
   useEffect(()=>{
     localStorage.setItem('grid', JSON.stringify(grid));
@@ -32,12 +33,24 @@ function App() {
       setFiltergrid([])
     }
   }
+  const capturecordinates=(e,xaxis,yaxis)=>{
+    setcordinates(e.target)
+  }
+  const bolditem=()=>{
+    console.log(cordinates);
+    cordinates.setAttribute('style','font-weight:700')
+  }
+  const italicitem=()=>{
+    cordinates.setAttribute('style','font-style: italic')
+    
+  }
 
   useEffect(() => {
     if (localStorage.getItem('grid')) {
       setGrid(JSON.parse(localStorage.getItem('grid')))
     }
   }, []);
+
 
 
 
@@ -51,6 +64,10 @@ function App() {
           onChange={(e) => handlesearch(e.target.value)}
         />
 
+      </div>
+      <div className="features">
+        <button className={`${!cordinates?'fade':"disable"} mx-2 `} onClick={bolditem}>Bold</button>
+        <button className={`${!cordinates?'fade':"disable"} mx-2 `} onClick={italicitem}>I</button>
       </div>
       <div className="container">
         {query.length>0?(filtergrid.map((row, rowIndex) => (
@@ -74,6 +91,7 @@ function App() {
                   value={cell}
                   onChange={(e) => handleInputChange(e, rowIndex, colIndex)}
                   className={`cell-input ${rowIndex%2===0?'changecolor':'sdfa'}`}
+                  onClick={(e)=>capturecordinates(e,rowIndex,colIndex)}
                 />
               </div>
             ))}

@@ -27,3 +27,12 @@
 .changecolor{
 background-color: rgb(238, 238, 238);
 }
+.features{
+  text-align: center;
+}
+.fade{
+  border: 1px solid black;
+}
+.disable{
+  display: hidden;
+}
