@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+.col {
+  padding: 5px;
+  text-align: left;
+}
+.col input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.cell-input:focus {
+  background-color: #d2ddf0;
+}
+
+.col {
+  border: 1px solid #ccc;
+}
+.searchbar{
+  text-align: center;
+}
+.searchbar input{
+  width: 30%;
+}
+.changecolor{
+background-color: rgb(238, 238, 238);
+}
